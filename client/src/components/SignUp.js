@@ -1,30 +1,30 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../utils/AuthContext";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
 
 function SignUp() {
-    const emailRef = useRef();
-    const passwordRef = useRef();
-    const passwordConfirmRef = useRef();
-    const { signUp } = useAuth();
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const { signUp } = useAuth();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const history = useHistory()
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-  async function handleSubmit(e){
-      e.preventDefault();
-
-      if(passwordRef.current.value !== passwordConfirmRef.current.value){
-        return setError("Passwords Do Not Match")
-      }
-      try {
-        setError("")
-        setLoading(true)
-        await signUp(emailRef.current.value, passwordRef.current.value)
-      } catch {
-        setError("Failed To Create Account")
-      }
-
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords Do Not Match");
+    }
+    try {
+      setError("");
+      setLoading(true);
+      await signUp(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
+    } catch {
+      setError("Failed To Create Account");
+    }
   }
 
   return (
