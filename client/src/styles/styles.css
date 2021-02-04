@@ -1,0 +1,11 @@
+header{
+    padding: 1rem;
+    max-height: 150px;
+    background-color: lightgrey;
+}
+.header-container{
+    display: flex;
+}
+.nav-bar{
+    padding-left: 3rem;
+}
