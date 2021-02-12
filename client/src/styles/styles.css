@@ -3,9 +3,11 @@ header{
     max-height: 150px;
     background-color: lightgrey;
 }
+header .container{
+    width: 100%;
+    justify-content: space-between;
+}
 .header-container{
     display: flex;
-}
-.nav-bar{
-    padding-left: 3rem;
+    justify-content: space-between;
 }

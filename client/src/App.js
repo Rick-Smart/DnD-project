@@ -13,20 +13,26 @@ import NewCharacter from "./pages/NewCharacter";
 function App() {
   return (
     <Router>
-      <AuthProvider>
-        <Switch>
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute
-            exact
-            path="/update-profile"
-            component={UpdateProfile}
-          />
-          <PrivateRoute exact path="/new-character" component={NewCharacter} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
-          <Route path="/forgot-password" component={ForgotPassword} />
-        </Switch>
-      </AuthProvider>
+      <StoreProvider>
+        <AuthProvider>
+          <Switch>
+            <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/update-profile"
+              component={UpdateProfile}
+            />
+            <PrivateRoute
+              exact
+              path="/new-character"
+              component={NewCharacter}
+            />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/forgot-password" component={ForgotPassword} />
+          </Switch>
+        </AuthProvider>
+      </StoreProvider>
     </Router>
   );
 }
